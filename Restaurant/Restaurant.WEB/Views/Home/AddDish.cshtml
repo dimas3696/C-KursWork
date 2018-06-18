@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Restaurant.WEB.Models.DishesViewModel>
+@{
+    ViewBag.Title = "AddDish";
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+
+<h2>AddDish</h2>
+
+<section class="add-dish hidden" id="add-dish">
+    <h2 class="section--header">Добавление нового блюда</h2>
+
+    <form class="add-dish--form">
+        <div class="add-dish--wrap">
+            <label class="add-dish--name add-dish--label" for="add-dish--name">Название блюда:</label>
+            <input class="add-dish--name add-dish--input input" type="text">
+        </div>
+
+        <div class="add-dish--wrap">
+            <label class="add-dish--count add-dish--label" for="add-dish--count">Количество ингридиентов:</label>
+            <input class="add-dish--count add-dish--input input" type="number" min="1" max="20">
+        </div>
+
+        <div class="add-dish--wrap">
+            <label class="add-dish--ingredients add-dish--label" for="add-dish--ingredient">Ингридиенты:</label>
+            <input type="text" class="add-dish--ingredient input">
+            <input type="text" class="add-dish--ingredient input">
+            <input type="text" class="add-dish--ingredient input">
+        </div>
+
+        <div class="add-dish--wrap">
+            <label class="add-dish--time add-dish--label" for="add-dish--time">Время приготовления (мин):</label>
+            <input class="add-dish--time add-dish--input input" type="number" min="1" max="120">
+        </div>
+
+        <div class="add-dish--wrap">
+            <label class="add-dish--time add-dish--label" for="add-dish--time">Цена блюда (грн):</label>
+            <input class="add-dish--time add-dish--input input" type="number" min="1" max="1000">
+        </div>
+
+        <button class="add-dish--btn">Добавить</button>
+
+    </form>
+</section>
+
+

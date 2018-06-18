@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+
+<section class="menu" id="menu">
+    <h2 class="section--header">Список блюд</h2>
+
+    @using (Ajax.BeginForm("FindDish", "FindDish", new AjaxOptions { UpdateTargetId = "results" }))
+    {
+    <form class="remove-dish--form">
+        <input type="text" class="remove-dish--input input" name="name">
+        <button class="remove-dish--btn">Найти</button>
+    </form>
+
+    }
+    <div id="results"></div>
+</section>
+

@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")">
+    <script src="@Url.Content("~/Scripts/jquery.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/script.js")" type="text/javascript"></script>
+</head>
+<body>
+
+    <nav class="main-menu">
+        <ul class="main-menu--list">
+            <li class="main-menu--item">
+                <a href="/Home/Index" class="main-menu--link">Редактировать блюдо</a>
+            </li>
+            <li class="main-menu--item">
+                <a href="/FindDish/Index" class="main-menu--link">Поиск блюд</a>
+            </li>
+            <li class="main-menu--item">
+                <a href="#remove-dish" class="main-menu--link">Удалить блюдо</a>
+            </li>
+            <li class="main-menu--item">
+                <a href="#menu" class="main-menu--link">Просмотреть меню</a>
+            </li>
+            <li class="main-menu--item">
+                <a href="#edit-ingredients" class="main-menu--link">Управление списком ингридиентов</a>
+            </li>
+            <li class="main-menu--item">
+                <a href="" class="main-menu--link">Формирование заказа</a>
+            </li>
+            <li class="main-menu--item">
+                <a href="" class="main-menu--link">Просмотр всех заказов</a>
+            </li>
+        </ul>
+    </nav>
+    @RenderBody();
+    @RenderSection("scripts", required: false);
+
+    @*<section class="edit-dish" id="edit-dish">
+            <h2 class="section--header">Редактирование блюда</h2>
+            <ul class="edit-dish--list dish--list">
+                <li class="dish--item">
+                    <h3 class="dish--name"><span class="dish--span">Борщ</span></h3>
+                    <button class="dish--name-edit">Изменить название блюда</button>
+                    <div class="dish--details">
+                        <h4 class="dish--header">Ингридиенты:</h4>
+                        <ul class="dish--ingredients">
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Мясо</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Лук</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Картошка</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <div class="input--wrap">
+                                <input class="ingredient--input input" type="text">
+                                <button class="ingredient--add">Добавить ингридиент</button>
+                            </div>
+                        </ul>
+
+                        <h4 class="dish--header">Время приготовления:</h4>
+                        <form class="dish--form">
+                            <input class="dish--time input" type="number" id="dish--time" value="40" min="0">
+                            <label for="dish--time">мин</label>
+                        </form>
+
+                        <h4 class="dish--header">Цена блюда:</h4>
+                        <form class="dish--form">
+                            <input class="dish--price input" type="number" id="dish--price" value="55" min="0">
+                            <label for="dish--price">грн</label>
+                        </form>
+
+                        <button class="dish--save">Сохранить</button>
+                    </div>
+
+
+                </li>
+
+                <li class="dish--item">
+                    <h3 class="dish--name"><span class="dish--span">Борщ</span></h3>
+                    <button class="dish--name-edit">Изменить название блюда</button>
+                    <div class="dish--details">
+                        <h4 class="dish--header">Ингридиенты:</h4>
+                        <ul class="dish--ingredients">
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Рис</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Мясо</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Мясо</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Мясо</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Мясо</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Мясо</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Лук</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <div class="input--wrap">
+                                <input class="ingredient--input input" type="text">
+                                <button class="ingredient--add">Добавить ингридиент</button>
+                            </div>
+                        </ul>
+
+                        <h4 class="dish--header">Время приготовления:</h4>
+                        <form class="dish--form">
+                            <input class="dish--time input" type="number" id="dish--time" value="40" min="0">
+                            <label for="dish--time">мин</label>
+                        </form>
+
+                        <h4 class="dish--header">Цена блюда:</h4>
+                        <form class="dish--form">
+                            <input class="dish--price input" type="number" id="dish--price" value="55" min="0">
+                            <label for="dish--price">грн</label>
+                        </form>
+
+                        <button class="dish--save">Сохранить</button>
+                    </div>
+                </li>
+
+                <li class="dish--item">
+                    <h3 class="dish--name"><span class="dish--span">Борщ</span></h3>
+                    <button class="dish--name-edit">Изменить название блюда</button>
+                    <div class="dish--details">
+                        <h4 class="dish--header">Ингридиенты:</h4>
+                        <ul class="dish--ingredients">
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Рис</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Подсолничное масло</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Лук</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <div class="input--wrap">
+                                <input class="ingredient--input input" type="text">
+                                <button class="ingredient--add">Добавить ингридиент</button>
+                            </div>
+                        </ul>
+
+                        <h4 class="dish--header">Время приготовления:</h4>
+                        <form class="dish--form">
+                            <input class="dish--time input" type="number" id="dish--time" value="40" min="0">
+                            <label for="dish--time">мин</label>
+                        </form>
+
+                        <h4 class="dish--header">Цена блюда:</h4>
+                        <form class="dish--form">
+                            <input class="dish--price input" type="number" id="dish--price" value="55" min="0">
+                            <label for="dish--price">грн</label>
+                        </form>
+
+                        <button class="dish--save">Сохранить</button>
+                    </div>
+                </li>
+
+                <li class="dish--item">
+                    <h3 class="dish--name"><span class="dish--span">Борщ</span></h3>
+                    <button class="dish--name-edit">Изменить название блюда</button>
+                    <div class="dish--details">
+                        <h4 class="dish--header">Ингридиенты:</h4>
+                        <ul class="dish--ingredients">
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Рис</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Мясо</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Лук</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <div class="input--wrap">
+                                <input class="ingredient--input input" type="text">
+                                <button class="ingredient--add">Добавить ингридиент</button>
+                            </div>
+                        </ul>
+
+                        <h4 class="dish--header">Время приготовления:</h4>
+                        <form class="dish--form">
+                            <input class="dish--time input" type="number" id="dish--time" value="40" min="0">
+                            <label for="dish--time">мин</label>
+                        </form>
+
+                        <h4 class="dish--header">Цена блюда:</h4>
+                        <form class="dish--form">
+                            <input class="dish--price input" type="number" id="dish--price" value="55" min="0">
+                            <label for="dish--price">грн</label>
+                        </form>
+
+                        <button class="dish--save">Сохранить</button>
+                    </div>
+                </li>
+
+                <li class="dish--item">
+                    <h3 class="dish--name"><span class="dish--span">Борщ</span></h3>
+                    <button class="dish--name-edit">Изменить название блюда</button>
+                    <div class="dish--details">
+                        <h4 class="dish--header">Ингридиенты:</h4>
+                        <ul class="dish--ingredients">
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Рис</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Мясо</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Лук</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <div class="input--wrap">
+                                <input class="ingredient--input input" type="text">
+                                <button class="ingredient--add">Добавить ингридиент</button>
+                            </div>
+                        </ul>
+
+                        <h4 class="dish--header">Время приготовления:</h4>
+                        <form class="dish--form">
+                            <input class="dish--time input" type="number" id="dish--time" value="40" min="0">
+                            <label for="dish--time">мин</label>
+                        </form>
+
+                        <h4 class="dish--header">Цена блюда:</h4>
+                        <form class="dish--form">
+                            <input class="dish--price input" type="number" id="dish--price" value="55" min="0">
+                            <label for="dish--price">грн</label>
+                        </form>
+
+                        <button class="dish--save">Сохранить</button>
+                    </div>
+                </li>
+
+                <li class="dish--item">
+                    <h3 class="dish--name"><span class="dish--span">Суши</span></h3>
+                    <button class="dish--name-edit">Изменить название блюда</button>
+                    <div class="dish--details">
+                        <h4 class="dish--header">Ингридиенты:</h4>
+                        <ul class="dish--ingredients">
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Рис</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Рыба</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <li class="dish--ingredient">
+                                <p class="ingredient--name">Огурец</p>
+                                <button class="ingredient--delete">Удалить ингридиент</button>
+                            </li>
+                            <div class="input--wrap">
+                                <input class="ingredient--input input" type="text">
+                                <button class="ingredient--add">Добавить ингридиент</button>
+                            </div>
+                        </ul>
+
+                        <h4 class="dish--header">Время приготовления:</h4>
+                        <form class="dish--form">
+                            <input class="dish--time input" type="number" id="dish--time" value="40" min="0">
+                            <label for="dish--time">мин</label>
+                        </form>
+
+                        <h4 class="dish--header">Цена блюда:</h4>
+                        <form class="dish--form">
+                            <input class="dish--price input" type="number" id="dish--price" value="55" min="0">
+                            <label for="dish--price">грн</label>
+                        </form>
+
+                        <button class="dish--save">Сохранить</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="add-dish hidden" id="add-dish">
+            <h2 class="section--header">Добавление нового блюда</h2>
+
+            <form class="add-dish--form">
+                <div class="add-dish--wrap">
+                    <label class="add-dish--name add-dish--label" for="add-dish--name">Название блюда:</label>
+                    <input class="add-dish--name add-dish--input input" type="text">
+                </div>
+
+                <div class="add-dish--wrap">
+                    <label class="add-dish--count add-dish--label" for="add-dish--count">Количество ингридиентов:</label>
+                    <input class="add-dish--count add-dish--input input" type="number" min="1" max="20">
+                </div>
+
+                <div class="add-dish--wrap">
+                    <label class="add-dish--ingredients add-dish--label" for="add-dish--ingredient">Ингридиенты:</label>
+                    <input type="text" class="add-dish--ingredient input">
+                    <input type="text" class="add-dish--ingredient input">
+                    <input type="text" class="add-dish--ingredient input">
+                </div>
+
+                <div class="add-dish--wrap">
+                    <label class="add-dish--time add-dish--label" for="add-dish--time">Время приготовления (мин):</label>
+                    <input class="add-dish--time add-dish--input input" type="number" min="1" max="120">
+                </div>
+
+                <div class="add-dish--wrap">
+                    <label class="add-dish--time add-dish--label" for="add-dish--time">Цена блюда (грн):</label>
+                    <input class="add-dish--time add-dish--input input" type="number" min="1" max="1000">
+                </div>
+
+                <button class="add-dish--btn">Добавить</button>
+
+            </form>
+        </section>
+
+        <section class="remove-dish hidden" id="remove-dish">
+            <h2 class="remove-dish--header">Удаление блюда</h2>
+        </section>
+
+        <section class="menu hidden" id="menu">
+            <h2 class="menu--header">Список блюд</h2>
+        </section>
+
+        <section class="edit-ingredients hidden" id="edit-ingredients">
+            <h2 class="edit-ingredients--header">Редактирование ингридиентов</h2>
+        </section>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/script")
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.js")
+    @RenderSection("scripts", required: false)
+    @*<script src="js/jquery.min.js"></script>
+        <script src="js/script.js"></script>*@
+</body>
+</html>

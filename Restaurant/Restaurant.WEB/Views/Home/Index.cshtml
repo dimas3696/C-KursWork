@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Restaurant.WEB.Models.DishesViewModel>
+
+@{
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+<section class="edit-dish" id="edit-dish">
+    <h2 class="section--header">Редактирование блюда</h2>
+    <ul class="edit-dish--list dish--list">
+
+        @foreach (var dish in Model)
+        {
+            <li class="dish--item">
+                <div class="dish--name"></div>
+                <h3 class="dish--span" data-name="true">@Html.DisplayName(dish.Name)</h3>
+
+                <button class="dish--name-edit">Изменить название блюда</button>
+                <div class="dish--details">
+                    <h4 class="dish--header">Ингридиенты:</h4>
+                    <ul class="dish--ingredients">
+                        @using (Ajax.BeginForm("DeleteIngredient", "Home", new AjaxOptions { UpdateTargetId = "resultIngredients" }))
+                        {
+                            foreach (var ingredient in dish.Ingredients)
+                            {
+                                <li class="dish--ingredient">
+                                    <p class="ingredient--name">@Html.DisplayFor(i => ingredient.Name)</p>
+                                    <button class="ingredient--delete" onclick="location.href='/Home/DeleteIngredient?idDish=@dish.Id&idIngredient=@ingredient.Id'">Удалить ингридиент</button>
+                                </li>
+                            }
+                        }
+                        <li>
+                            @using (Html.BeginForm("AddIngredient", "Home", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="input--wrap">
+                                    <input type="hidden" name="idWhere" value="@dish.Id" class="dish--id">
+                                    <input class="ingredient--input input" type="text" name="ingredientName" id="ingredientName">
+                                    <button class="ingredient--add" @*onclick="location.href='/Home/AddIngredient?ingredientName=&idWhere=@dish.Id'"*@>Добавить ингридиент</button>
+                                </div>
+                            }
+                        </li>
+                    </ul>
+
+                    <h4 class="dish--header">Время приготовления:</h4>
+                    <form class="dish--form dish--form__time">
+                        <input class="dish--time input" type="number" id="dish--time" value=@Html.DisplayFor(modelItem => dish.PrepareTime) min="0">
+                        <label for="dish--time">мин</label>
+                    </form>
+
+                    <h4 class="dish--header">Цена блюда:</h4>
+                    <form class="dish--form dish--form__price">
+                        <input class="dish--price input" type="text" id="dish--price" value="@Html.DisplayFor(modelItem => dish.Price)">
+                        <label for="dish--price">грн</label>
+                    </form>
+                    <input type="hidden" name="idDish" value="@dish.Id" class="dish--id">
+                    <button class="dish--save" @*onclick="location.href='/Home/Edit?dishId=@dish.Id&newPrepareTime=<!--Get time from js-->&newPrice=<!--Get price from js-->'"*@>Изменить</button>
+                </div>
+
+                
+            </li>
+        }
+    </ul>
+</section>

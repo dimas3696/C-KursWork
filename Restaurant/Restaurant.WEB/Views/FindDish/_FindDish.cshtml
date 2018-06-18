@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Restaurant.WEB.Models.DishesViewModel>
+
+
+<ul class="edit-dish--list dish--list">
+    @{ if (ViewBag.Error != null)
+        {
+            <div>
+                <label class="not--find--dish">@ViewBag.Error</label>
+            </div>
+        } 
+    }
+    @foreach (var dish in Model)
+    {
+        <li class="dish--item">
+            <div class="dish--name"></div>
+            <h3 class="dish--span" data-name="true">@Html.DisplayName(dish.Name)</h3>
+
+            <div class="dish--details">
+                <h4 class="dish--header">Ингридиенты:</h4>
+                <ul class="dish--ingredients">
+                    @foreach (var ingredient in dish.Ingredients)
+                    {
+                        <li class="dish--ingredient">
+                            <p class="ingredient--name">@Html.DisplayFor(i => ingredient.Name)</p>
+                        </li>
+                    }
+                </ul>
+
+                <h4 class="dish--header">Время приготовления:</h4>
+                <form class="dish--form dish--form__time">
+                    <input class="dish--time input" type="number" id="dish--time" value=@Html.DisplayFor(modelItem => dish.PrepareTime) min="0">
+                    <label for="dish--time">мин</label>
+                </form>
+
+                <h4 class="dish--header">Цена блюда:</h4>
+                <form class="dish--form dish--form__price">
+                    <input class="dish--price input" type="text" id="dish--price" value="@Html.DisplayFor(modelItem => dish.Price)">
+                    <label for="dish--price">грн</label>
+                </form>
+            </div>
+        </li>
+     }
+</ul>
+
+ 
+
+
